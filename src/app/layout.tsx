@@ -1,6 +1,8 @@
+import AppHeader from '@/shared/layout/app-header'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import AppFooter from '@/shared/layout/app-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AppHeader />
+        {children}
+        <AppFooter />
+      </body>
     </html>
   )
 }
