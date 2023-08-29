@@ -1,0 +1,8 @@
+const CommitmentTextList: string[] = [
+    `We take pride in representing clients in a professional and determined manner. Our fervent team dedicates its energies, talents, and skills to provide aggressive and rigorous representation. We believe in establishing a collaborative approach with our valued clients and value our relationship with each one. It is our commitment to provide them high quality and result-driven legal services tailored on a case-by-case basis to cater to their specific needs. We help them to reach their personal and business goals. Our motivated attorneys provide thorough, sound, and prudent advice, in a cost-conscious and cost-effective manner. We use strong advocacy to build bridges that link you to your goals, refine your professional strategy, and make real improvements in performance.`,
+    `We vigilantly follow developments in law and are quick to advise clients of the impact. We tirelessly work with our clients to understand their needs and continuously improve on current practice.`,
+    `At De Consortia, we ambitiously strive to develop a long-term relationship with each client, based on mutual trust and a profound understanding of the client's unique operation and objectives. Ultimately, our goal simply is to be an effective part of the solution to our Client&apos;s legal dilemmas.`,
+    `We believe that effective professional approach, services management, and effective decisions are key features that help us triumphantly achieve the objectives for our clients.`,
+];
+
+export default CommitmentTextList;
