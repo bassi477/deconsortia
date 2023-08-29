@@ -16,8 +16,8 @@ export default function AppHeader() {
                     <ImagePresenter
                         src={companyLogo}
                         alt='company-logo'
-                        width={200}
-                        height={200}
+                        width={150}
+                        height={150}
                     />
                 </Link>
                 <div className="flex flex-row ml-auto my-auto">

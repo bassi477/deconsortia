@@ -22,4 +22,4 @@ const AppConstants: AppConstant = {
     },
 }
 
-export default AppConstant;
+export default AppConstants;
