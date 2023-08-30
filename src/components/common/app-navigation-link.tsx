@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-interface NavigationLinkProps {
+interface AppNavigationLinkProps {
     children: React.ReactNode;
     url: string;
 }
 
-export default function NavigationLink(props: NavigationLinkProps) {
+export default function AppNavigationLink(props: AppNavigationLinkProps) {
 
     return (
         <>

@@ -1,9 +1,9 @@
 import AppImageRepository from "@/constants/app-image-repository";
-import ImagePresenter from "../components/image-presenter";
 import AppConstants from "@/constants/app-constants";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
-import SocialLink from "../components/social-link";
+import ImagePresenter from "../common/image-presenter";
+import SocialLink from "../common/social-link";
 
 export default function AppFooter() {
 

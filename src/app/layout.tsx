@@ -1,8 +1,9 @@
-import AppHeader from '@/shared/layout/app-header'
+import AppHeader from '@/components/layout/app-header'
+import "tw-elements/dist/css/tw-elements.min.css";
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import AppFooter from '@/shared/layout/app-footer'
+import AppFooter from '@/components/layout/app-footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
