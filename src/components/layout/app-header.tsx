@@ -1,16 +1,20 @@
 "use client"
 
-// IMPORTS - Next Components
+// IMPORTS - Next
 import Link from "next/link";
 
-// IMPORTS - CONSTANTS
+// IMPORTS - Constants
 import AppNavigationRoutes from "@/constants/app-navigation-routes";
 import HomeNavigationRoute from "@/constants/home-navigation-route";
-import AppImageRepository from "@/constants/app-image-repository";
 
-// IMPORTS - Common Components
-import ImagePresenter from "../common/image-presenter";
+// IMPORTS - Common
+
+// IMPORTS - Icons
+import AppCompanyLogoIcon from "../icons/app-company-logo-icon";
+
+// IMPORTS - React
 import { useEffect } from "react";
+import AppNavHamburgerIcon from "../icons/app-nav-hamburger-icon";
 
 interface AppHeaderNavigationMenuProps {
     // orientation: 'horizontal' | 'vertical';
@@ -101,17 +105,10 @@ function AppHeaderNavigationMenu(props: AppHeaderNavigationMenuProps) {
 
 function AppHeaderBrand() {
 
-    const companyLogo = AppImageRepository.COMPANY_LOGO;
-
     return (
         <div className="flex items-center flex-no-shrink text-white mr-6">
             <Link href={HomeNavigationRoute.url}>
-                <ImagePresenter
-                    src={companyLogo}
-                    alt='company-logo'
-                    width={150}
-                    height={150}
-                />
+                <AppCompanyLogoIcon />
             </Link>
         </div>
     );
@@ -129,16 +126,7 @@ function AppHeaderHamburger() {
             aria-expanded="false"
             aria-label="Toggle navigation">
             <span className="[&>svg]:w-7">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-7 w-7">
-                    <path
-                        fill-rule="evenodd"
-                        d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                        clip-rule="evenodd" />
-                </svg>
+                <AppNavHamburgerIcon />
             </span>
         </button>
     );
@@ -157,7 +145,7 @@ export default function AppHeader() {
     return (
         <>
             <nav
-                className="relative flex w-full flex-nowrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:flex-wrap lg:justify-start lg:py-4"
+                className="relative flex w-full flex-nowrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 lg:flex-wrap lg:justify-start lg:py-4"
                 data-te-navbar-ref>
                 <div className="flex w-full flex-wrap items-center justify-between px-3">
                     <AppHeaderBrand />

@@ -1,162 +1,170 @@
-import AppImageRepository from "@/constants/app-image-repository";
+"use client"
+
+// IMPORTS - Next
+
+
+// IMPORTS - Constants
 import AppConstants from "@/constants/app-constants";
-import { HomeIcon } from "@heroicons/react/24/solid";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
-import ImagePresenter from "../common/image-presenter";
-import SocialLink from "../common/social-link";
 
-export default function AppFooter() {
+// IMPORTS - Common
 
-    const companyLogo = AppImageRepository.COMPANY_LOGO;
+
+// IMPORTS - Icons
+import AppSocialFacebookIcon from "../icons/app-social-facebook-icon";
+import AppSocialTwitterIcon from "../icons/app-social-twitter-icon";
+import AppSocialInstagramIcon from "../icons/app-social-instagram-icon";
+import AppSocialLinkedInIcon from "../icons/app-social-linkedin-icon";
+import AppCompanyLogoIcon from "../icons/app-company-logo-icon";
+import AppContactHomeIcon from "../icons/app-contact-home-icon";
+import AppContactEmailIcon from "../icons/app-contact-email-icon";
+import AppContactPhoneIcon from "../icons/app-contact-phone-icon";
+
+// IMPORTS - React
+import { useEffect, useRef, useState } from "react";
+
+// IMPORTS - Google Maps
+import { Loader as GoogleMapsLoader } from "@googlemaps/js-api-loader";
+
+
+interface AppFooterContactSectionItemProps {
+    content: string;
+    icon: JSX.Element;
+}
+
+interface AppFooterSocialSectionLinkProps {
+    url: string;
+    icon: JSX.Element;
+}
+
+
+function AppFooterSocialSection() {
+    const socialLinks = AppConstants.officeInformation.socialLinks;
 
     return (
-        <>
-            <div className="flex flex-row p-5 bg-white rounded-t">
-                <div className="basis-2/12 mr-2">
-                    <ImagePresenter
-                        src={companyLogo}
-                        alt='company-logo'
-                        width={200}
-                        height={200}
-                    />
-                </div>
-                <div className="basis-4/12 flex flex-col">
-                    <div className="flex flex-row">
-                        <HomeIcon className="basis-1/4 caret-black" />
-                        <span className="basis-3/4">{AppConstants.officeInformation.address}</span>
-                    </div>
-                    <div className="flex flex-row">
-                        <PhoneIcon className="basis-1/4 caret-black" />
-                        <span className="basis-3/4">{AppConstants.officeInformation.phone}</span>
-                    </div>
-                    <div className="flex flex-row">
-                        <EnvelopeIcon className="basis-1/4 caret-black" />
-                        <span className="basis-3/4">{AppConstants.officeInformation.email}</span>
-                    </div>
-                </div>
-                <div className="basis-2/12 flex flex-col">
-                    <h3>Connect with us</h3>
-                    <div className="flex flex-row justify-center">
-                        <SocialLink
-                            url="https://www.facebook.com">
-                            <ImagePresenter
-                                src={AppImageRepository.SOCIAL_FACEBOOK_LOGO}
-                                alt="social-facebook-logo"
-                                width={100}
-                                height={100} />
-                        </SocialLink>
-                        <SocialLink
-                            url="https://www.twitter.com">
-                            <ImagePresenter
-                                src={AppImageRepository.SOCIAL_TWITTER_LOGO}
-                                alt="social-twitter-logo"
-                                width={100}
-                                height={100} />
-                        </SocialLink>
-                        <SocialLink
-                            url="https://www.instagram.com">
-                            <ImagePresenter
-                                src={AppImageRepository.SOCIAL_INSTAGRAM_LOGO}
-                                alt="social-instagram-logo"
-                                width={100}
-                                height={100} />
-                        </SocialLink>
-                        <SocialLink
-                            url="https://www.linkedin.com">
-                            <ImagePresenter
-                                src={AppImageRepository.SOCIAL_LINKEDIN_LOGO}
-                                alt="social-linkedin-logo"
-                                width={100}
-                                height={100} />
-                        </SocialLink>
-                    </div>
-                </div>
-                <div className="basis-4/12">
-                    Map will be here.
-                </div>
+        <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+            <div className="mr-12 hidden lg:block">
+                <span>Get connected with us on social networks:</span>
             </div>
-        </>
+            <div className="flex justify-center">
+                <AppFooterSocialSectionLink icon={<AppSocialFacebookIcon />} url={socialLinks.facebook}/>
+                <AppFooterSocialSectionLink icon={<AppSocialTwitterIcon />} url={socialLinks.twitter}/>
+                <AppFooterSocialSectionLink icon={<AppSocialInstagramIcon />} url={socialLinks.instagram}/>
+                <AppFooterSocialSectionLink icon={<AppSocialLinkedInIcon />} url={socialLinks.linkedIn}/>
+            </div>
+        </div>
     );
 }
 
-/*
+function AppFooterSocialSectionLink(props: AppFooterSocialSectionLinkProps) {
+    return (
+        <a href={props.url} className="mr-6 text-neutral-600 dark:text-neutral-200">
+            {props.icon}
+        </a>
+    );
+}
 
-For reference
+function AppFooterContactSection() {
+    return (
+        <div className="flex flex-col">
+            <h6 className="mb-4 flex justify-start font-semibold uppercase">
+                Contact
+            </h6>
+            <AppFooterContactSectionItem icon={<AppContactHomeIcon />}
+                content={AppConstants.officeInformation.address} />
+            <AppFooterContactSectionItem icon={<AppContactEmailIcon />}
+                content={AppConstants.officeInformation.email} />
+            <AppFooterContactSectionItem icon={<AppContactPhoneIcon />}
+                content={AppConstants.officeInformation.phone} />
+        </div>
+    );
+}
 
-<div class="row custom-footer text-light">
-    <div class="col-lg-12">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <img style="background: white;" class="custom_footer_logo" id="logo" class="d-inline-block mr-1"
-                            alt="Logo" src="{{ url('img/logo.svg') }}">
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row my-1">
-                            <div class="col-lg-12">
-                                <h3>Contact Us</h3>
-                            </div>
+function AppFooterContactSectionItem(props: AppFooterContactSectionItemProps) {
+
+    return (
+        <p className="mb-4 flex items-center justify-start">
+            {props.icon}
+            {props.content}
+        </p>
+    );
+}
+
+function AppFooterMapSection() {
+    const googleMapRef = useRef<any>(null);
+    const location = AppConstants.officeInformation.location;
+    const apiKey = AppConstants.googleMapsAPIKey;
+    const mapZoom = 8;
+    const [map, setMap] = useState<google.maps.Map>();
+    const [mapMarker, setMapMarker] = useState<google.maps.Marker>();
+
+    useEffect(() => {
+        const mapLoader = new GoogleMapsLoader({
+            apiKey: apiKey,
+            version: 'weekly'
+        });
+        const renderMap = async () => {
+            const MapLibrary = await mapLoader.importLibrary('maps');
+            const MarkerLibrary = await mapLoader.importLibrary('marker');
+            const map = new MapLibrary.Map(googleMapRef.current as HTMLElement, {
+                center: {
+                    lat: location.latitude,
+                    lng: location.longitude
+                },
+                zoom: mapZoom
+            });
+            const marker = new MarkerLibrary.Marker({
+                map: map,
+                position: {
+                    lat: location.latitude,
+                    lng: location.longitude,
+                },
+                clickable: false,
+                draggable: false
+            });
+            setMap(map);
+            setMapMarker(marker);
+        };
+
+        renderMap();
+
+    }, [location, apiKey]);
+
+    return (
+        <div style={{ height: "400px" }} ref={googleMapRef} />
+    );
+}
+
+function AppFooterCopyrightSection() {
+    const currentYear = new Date().getFullYear();
+    return (
+        <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+            <span>&copy; {currentYear} Copyright: </span>
+            <span className="font-semibold text-neutral-600 dark:text-neutral-400">{AppConstants.title}</span>
+        </div>
+    );
+}
+
+export default function AppFooter() {
+
+    return (
+        <>
+            <footer className="relative w-full bg-[#FBFBFB] pt-2 text-neutral-500 shadow-lg dark:bg-neutral-600 dark:text-neutral-200 lg:pt-4">
+                <AppFooterSocialSection />
+                <div className="mx-6 py-10 text-center md:text-left">
+                    <div className="grid-1 grid gap-8 md:grid-cols-5 lg:grid-cols-6">
+                        <div className="hidden lg:flex flex-shrink-0">
+                            <AppCompanyLogoIcon />
                         </div>
-                        <div class="row my-1">
-                            <div class="col-lg-1">
-                                <i class="fa fa-address-book" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-11">
-                                <p> Basement, Sultan Arcade, Main IJP Road, Sector I-8/4, Faizabad, Islamabad.</p>
-                            </div>
+                        <div className="col-span-2">
+                            <AppFooterContactSection />
                         </div>
-                        <div class="row my-1">
-                            <div class="col-lg-1">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-11">
-                                <p>033 5571 7171</p>
-                            </div>
-                        </div>
-                        <div class="row my-1">
-                            <div class="col-lg-1">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-lg-11">
-                                <p>info@deconsortia.com</p>
-                            </div>
+                        <div className="col-span-3">
+                            <AppFooterMapSection />
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="row my-1">
-                            <div class="col-lg-12">
-                                <h3>Connect with us</h3>
-                            </div>
-                        </div>
-                        <div class="row my-1">
-                            <div class="col-lg-12">
-                                <a href="#" class="social_links"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#" class="social_links"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#" class="social_links"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a href="#" class="social_links"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div id="map_loading" class="spinner-border mt-5"></div>
-                        <div id="map_div" style="display: none;" class="map_div">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="text-center pb-0 pt-2 mb-1">Powered by Bootstrap &COPY;</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-*/
+                <AppFooterCopyrightSection />
+            </footer>
+        </>
+    );
+}

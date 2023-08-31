@@ -14,10 +14,10 @@ const AppConstants: AppConstant = {
             longitude: 73.0844029
         },
         socialLinks: {
-            facebook: '',
-            instagram: '',
-            linkedIn: '',
-            twitter: ''
+            facebook: 'https//www.facebook.com',
+            instagram: 'https//www.instagram.com',
+            linkedIn: 'https//www.linkedin.com',
+            twitter: 'https//www.twitter.com'
         }
     },
 }
