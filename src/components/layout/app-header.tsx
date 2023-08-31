@@ -15,16 +15,81 @@ import AppCompanyLogoIcon from "../icons/app-company-logo-icon";
 // IMPORTS - React
 import { useEffect } from "react";
 import AppNavHamburgerIcon from "../icons/app-nav-hamburger-icon";
+import AppNavigationRoute from "@/interfaces/app-navigation-route";
+import AppNavDropdownIcon from "../icons/app-nav-dropdown-icon";
 
-interface AppHeaderNavigationMenuProps {
-    // orientation: 'horizontal' | 'vertical';
+interface AppNavigationRouteProps {
+    route: AppNavigationRoute;
 }
 
-function AppHeaderNavigationMenu(props: AppHeaderNavigationMenuProps) {
+type AppHeaderNavMenuDropdownProps = AppNavigationRouteProps;
+type AppHeaderNavMenuDropdownInlineProps = AppNavigationRouteProps;
+type AppHeaderNavMenuLinkProps = AppNavigationRouteProps;
+
+function AppHeaderNavMenuDropdown(props: AppHeaderNavMenuDropdownProps) {
+
+    return (
+        <li
+            className="mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1"
+            data-te-nav-item-ref
+            data-te-dropdown-ref
+            key={`AppNavRoute-${props.route.id}`}>
+            <a
+                className="flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href="#"
+                type="button"
+                id={`AppNavRoute-${props.route.id}-dropdown`}
+                data-te-dropdown-toggle-ref
+                aria-expanded="false">
+                {props.route.title}
+                <span className="ml-1 w-2">
+                    <AppNavDropdownIcon />
+                </span>
+            </a>
+            <ul
+                className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                aria-labelledby={`AppNavRoute-${props.route.id}-dropdown`}
+                data-te-dropdown-menu-ref>
+                {
+                    props.route.subRoutes && props.route.subRoutes.map((subRoute) => {
+
+                        return (
+                            <li key={`AppNavRoute-${props.route.id}-SubRoute-${subRoute.id}`}>
+                                <a
+                                    className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    href={subRoute.url}
+                                    data-te-dropdown-item-ref>{subRoute.title}</a>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </li>
+    );
+}
+
+function AppHeaderNavMenuDropdownInline(props: AppHeaderNavMenuDropdownInlineProps) { }
+
+function AppHeaderNavMenuLink(props: AppHeaderNavMenuLinkProps) {
+
+    return (
+        <li
+            className="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1"
+            data-te-nav-item-ref
+            key={`AppNavRoute-${props.route.id}`}>
+            <a
+                className="p-0 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                href={props.route.url}
+                data-te-nav-link-ref>{props.route.title}</a>
+        </li>
+    );
+}
+
+function AppHeaderNavMenu() {
 
     return (
         <div className="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
-            id="appHeaderNavigationMenu"
+            id="appHeaderNavMenu"
             data-te-collapse-item>
             <ul
                 className="list-style-none ml-auto flex flex-col pl-0 lg:mt-1 lg:flex-row"
@@ -36,61 +101,8 @@ function AppHeaderNavigationMenu(props: AppHeaderNavigationMenuProps) {
                             <>
                                 {
                                     route.subRoutes && route.subRoutes.length > 0 ?
-                                        <li
-                                            className="mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1"
-                                            data-te-nav-item-ref
-                                            data-te-dropdown-ref
-                                            key={`AppNavigationRoute-${route.id}`}>
-                                            <a
-                                                className="flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                                                href="#"
-                                                type="button"
-                                                id={`AppNavigationRoute-${route.id}-dropdown`}
-                                                data-te-dropdown-toggle-ref
-                                                aria-expanded="false">
-                                                {route.title}
-                                                <span className="ml-1 w-2">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        className="h-5 w-5">
-                                                        <path
-                                                            fill-rule="evenodd"
-                                                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                                            clip-rule="evenodd" />
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                            <ul
-                                                className="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                                                aria-labelledby={`AppNavigationRoute-${route.id}-dropdown`}
-                                                data-te-dropdown-menu-ref>
-                                                {
-                                                    route.subRoutes.map((subRoute) => {
-
-                                                        return (
-                                                            <li key={`AppNavigationRoute-${route.id}-SubRoute-${subRoute.id}`}>
-                                                                <a
-                                                                    className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                                                                    href={subRoute.url}
-                                                                    data-te-dropdown-item-ref>{subRoute.title}</a>
-                                                            </li>
-                                                        );
-                                                    })
-                                                }
-                                            </ul>
-                                        </li>
-                                        :
-                                        <li
-                                            className="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1"
-                                            data-te-nav-item-ref
-                                            key={`AppNavigationRoute-${route.id}`}>
-                                            <a
-                                                className="p-0 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-                                                href={route.url}
-                                                data-te-nav-link-ref>{route.title}</a>
-                                        </li>
+                                        <AppHeaderNavMenuDropdown route={route} /> :
+                                        <AppHeaderNavMenuLink route={route} />
                                 }
                             </>
 
@@ -121,8 +133,8 @@ function AppHeaderHamburger() {
             className="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
             type="button"
             data-te-collapse-init
-            data-te-target="#appHeaderNavigationMenu"
-            aria-controls="appHeaderNavigationMenu"
+            data-te-target="#appHeaderNavMenu"
+            aria-controls="appHeaderNavMenu"
             aria-expanded="false"
             aria-label="Toggle navigation">
             <span className="[&>svg]:w-7">
@@ -150,7 +162,7 @@ export default function AppHeader() {
                 <div className="flex w-full flex-wrap items-center justify-between px-3">
                     <AppHeaderBrand />
                     <AppHeaderHamburger />
-                    <AppHeaderNavigationMenu />
+                    <AppHeaderNavMenu />
                 </div>
             </nav>
         </>
