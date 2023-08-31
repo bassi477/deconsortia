@@ -11,7 +11,17 @@ const nextConfig = {
             destination: '/about/introduction',
             permanent: true
         },
-    ]
+    ],
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'mdbcdn.b-cdn.net',
+                pathname: '/**',
+                port: ''
+            }
+        ]
+    }
 }
 
 module.exports = nextConfig
