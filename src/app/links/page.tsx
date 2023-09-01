@@ -14,7 +14,7 @@ export default function Links() {
                         return (
                             <a key={`ObjectiveText-${index}`}
                                 href={link.url}
-                                className="flex cursor-pointer rounded-lg p-4 transition duration-500 hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:ring-0 dark:hover:bg-neutral-600 dark:hover:text-neutral-200 dark:focus:bg-neutral-600 dark:focus:text-neutral-200 border-b-2 border-neutral-100 border-opacity-100 my-2 shadow-lg">
+                                className="flex lg:text-lg xl:text-xl 2xl:text-3xl cursor-pointer rounded-lg p-4 xl:p-6 2xl:p-8 transition duration-500 hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:ring-0 dark:hover:bg-neutral-600 dark:hover:text-neutral-200 dark:focus:bg-neutral-600 dark:focus:text-neutral-200 border-b-2 border-neutral-100 border-opacity-100 my-2 shadow-lg">
                                 {link.title}
                                 <span className="ml-auto">
                                     <AppLinksOpenIcon />

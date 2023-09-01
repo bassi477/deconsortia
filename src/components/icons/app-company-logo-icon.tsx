@@ -1,20 +1,8 @@
 export default function AppCompanyLogoIcon() {
 
-    const styleContent = `<![CDATA[
-        .fil3 {fill:#FEFEFE}
-        .fil4 {fill:#373435}
-        .fil5 {fill:#373435}
-        .fil1 {fill:#ED3237}
-        .fil2 {fill:#ED3237}
-        .fil6 {fill:#FEFEFE;fill-rule:nonzero}
-        .fil0 {fill:#373435;fill-rule:nonzero}
-       ]]>`;
-
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
-            width="100px"
-            height="80px"
             version="1.1"
             style={{
                 shapeRendering: 'geometricPrecision',
@@ -23,13 +11,9 @@ export default function AppCompanyLogoIcon() {
                 fillRule: 'evenodd',
                 clipRule: 'evenodd'
             }}
-            viewBox="1050 4000 6400 3000"
+            viewBox="1050 3000 6300 5000"   //"1050 4000 6400 3000"
+            className="w-full h-auto"
             xmlnsXlink="http://www.w3.org/1999/xlink">
-            <defs>
-                <style type="text/css">
-                    {styleContent}
-                </style>
-            </defs>
             <g id="Layer_x0020_1">
                 <metadata id="CorelCorpID_0Corel-Layer" />
                 <g id="_1107010256">

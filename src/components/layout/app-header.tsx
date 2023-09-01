@@ -30,12 +30,12 @@ function AppHeaderNavMenuDropdown(props: AppHeaderNavMenuDropdownProps) {
 
     return (
         <li
-            className="mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1"
+            className="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1 xl:pl-4 xl:pr-2"
             data-te-nav-item-ref
             data-te-dropdown-ref
             key={`AppNavRoute-${props.route.id}`}>
             <a
-                className="flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                className="flex items-center text-md xl:text-xl 2xl:text-4xl text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
                 href="#"
                 type="button"
                 id={`AppNavRoute-${props.route.id}-dropdown`}
@@ -56,7 +56,7 @@ function AppHeaderNavMenuDropdown(props: AppHeaderNavMenuDropdownProps) {
                         return (
                             <li key={`AppNavRoute-${props.route.id}-SubRoute-${subRoute.id}`}>
                                 <a
-                                    className="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                                    className="block w-full whitespace-nowrap bg-transparent px-4 py-2 2xl:px-6 2xl:py-4 text-sm xl:text-xl 2xl:text-4xl font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
                                     href={subRoute.url}
                                     data-te-dropdown-item-ref>{subRoute.title}</a>
                             </li>
@@ -74,11 +74,11 @@ function AppHeaderNavMenuLink(props: AppHeaderNavMenuLinkProps) {
 
     return (
         <li
-            className="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1"
+            className="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1 xl:pl-4 xl:pr-2"
             data-te-nav-item-ref
             key={`AppNavRoute-${props.route.id}`}>
             <a
-                className="p-0 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+                className="p-0 text-md xl:text-xl 2xl:text-4xl text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
                 href={props.route.url}
                 data-te-nav-link-ref>{props.route.title}</a>
         </li>
@@ -118,8 +118,8 @@ function AppHeaderNavMenu() {
 function AppHeaderBrand() {
 
     return (
-        <div className="flex items-center flex-no-shrink text-white mr-6">
-            <Link href={HomeNavigationRoute.url}>
+        <div className="relative flex">
+            <Link className="w-[100px] lg:w-[150px] xl:w-[200px] 2xl:w-[350px] h-auto" href={HomeNavigationRoute.url}>
                 <AppCompanyLogoIcon />
             </Link>
         </div>

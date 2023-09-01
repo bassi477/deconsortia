@@ -40,7 +40,7 @@ function HomeJumbotron() {
     }, []);
 
     return (
-        <div className="relative overflow-hidden bg-cover bg-no-repeat p-12 rounded-b-lg h-[45vh]"
+        <div className="relative overflow-hidden bg-cover bg-no-repeat p-12 rounded-b-lg h-[50vh]"
             style={{
                 backgroundImage: `url('${HomeBackgroundImageList[currentImageIndex]}')`,
                 // height: '400px'
@@ -50,7 +50,7 @@ function HomeJumbotron() {
                 style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                 <div className="flex h-full items-end justify-start p-6 xl:p-12">
                     <div className="text-white">
-                        <h2 className="mb-4 text-sm sm:text-2xl md:text-4xl xl:text-6xl font-semibold">{HomeSlideshowTextList[currentTextIndex]}</h2>
+                        <h2 className="mb-4 text-sm sm:text-2xl md:text-4xl xl:text-5xl 2xl:text-7xl font-semibold">{HomeSlideshowTextList[currentTextIndex]}</h2>
                     </div>
                 </div>
             </div>
@@ -68,8 +68,8 @@ function HomePeopleSectionItem(props: HomePeopleSectionItemProps) {
                 width={0}
                 height={0}
                 sizes='100%'
-                className='mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px] xl:w-[200px] 2xl:w-[250px]' />
-            <h5 className="mb-4 text-lg font-bold">{props.member.name}</h5>
+                className='mx-auto mb-6 rounded-lg shadow-lg dark:shadow-black/20 w-[150px] xl:w-[250px] 2xl:w-[400px]' />
+            <h5 className="mb-4 text-md md:text-lg xl:text-2xl 2xl:text-4xl font-bold">{props.member.name}</h5>
         </div>
     );
 }

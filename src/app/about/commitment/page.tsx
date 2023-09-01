@@ -10,7 +10,7 @@ export default function Commitment() {
                 CommitmentTextList.map((text, index) => {
 
                     return (
-                        <p key={`CommitmentText-${index}`} className="my-3 text-neutral-500 dark:text-neutral-300">
+                        <p key={`CommitmentText-${index}`} className="my-3 xl:text-2xl 2xl:text-4xl text-neutral-500 dark:text-neutral-300">
                             {text}
                         </p>
                     );

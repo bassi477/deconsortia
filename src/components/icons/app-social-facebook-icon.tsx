@@ -1,7 +1,7 @@
 export default function AppSocialFacebookIcon() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            className="h-4 w-4 lg:h-5 lg:w-5 xl:h-6 xl:w-6 2xl:h-10 2xl:w-10"
             fill="currentColor"
             viewBox="0 0 24 24">
             <path

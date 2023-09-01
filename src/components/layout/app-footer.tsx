@@ -43,13 +43,13 @@ function AppFooterSocialSection() {
     return (
         <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
             <div className="mr-12 hidden lg:block">
-                <span>Get connected with us on social networks:</span>
+                <span className="xl:text-2xl 2xl:text-4xl">Get connected with us on social networks:</span>
             </div>
             <div className="flex justify-center">
-                <AppFooterSocialSectionLink icon={<AppSocialFacebookIcon />} url={socialLinks.facebook}/>
-                <AppFooterSocialSectionLink icon={<AppSocialTwitterIcon />} url={socialLinks.twitter}/>
-                <AppFooterSocialSectionLink icon={<AppSocialInstagramIcon />} url={socialLinks.instagram}/>
-                <AppFooterSocialSectionLink icon={<AppSocialLinkedInIcon />} url={socialLinks.linkedIn}/>
+                <AppFooterSocialSectionLink icon={<AppSocialFacebookIcon />} url={socialLinks.facebook} />
+                <AppFooterSocialSectionLink icon={<AppSocialTwitterIcon />} url={socialLinks.twitter} />
+                <AppFooterSocialSectionLink icon={<AppSocialInstagramIcon />} url={socialLinks.instagram} />
+                <AppFooterSocialSectionLink icon={<AppSocialLinkedInIcon />} url={socialLinks.linkedIn} />
             </div>
         </div>
     );
@@ -57,7 +57,7 @@ function AppFooterSocialSection() {
 
 function AppFooterSocialSectionLink(props: AppFooterSocialSectionLinkProps) {
     return (
-        <a href={props.url} className="mr-6 text-neutral-600 dark:text-neutral-200">
+        <a href={props.url} className="mr-6 2xl:mr-12 text-neutral-600 dark:text-neutral-200">
             {props.icon}
         </a>
     );
@@ -66,7 +66,7 @@ function AppFooterSocialSectionLink(props: AppFooterSocialSectionLinkProps) {
 function AppFooterContactSection() {
     return (
         <div className="flex flex-col">
-            <h6 className="mb-4 flex justify-start font-semibold uppercase">
+            <h6 className="mb-4 2xl:mb-8 flex justify-start font-semibold uppercase text-base lg:text-lg xl:text-2xl 2xl:text-4xl">
                 Contact
             </h6>
             <AppFooterContactSectionItem icon={<AppContactHomeIcon />}
@@ -82,7 +82,7 @@ function AppFooterContactSection() {
 function AppFooterContactSectionItem(props: AppFooterContactSectionItemProps) {
 
     return (
-        <p className="mb-4 flex items-center justify-start">
+        <p className="mb-4 2xl:mb-8 flex flex-shrink-0 items-center justify-start text-sm lg:text-base xl:text-2xl 2xl:text-4xl">
             {props.icon}
             {props.content}
         </p>
@@ -130,14 +130,14 @@ function AppFooterMapSection() {
     }, [location, apiKey]);
 
     return (
-        <div style={{ height: "400px" }} ref={googleMapRef} />
+        <div className="h-[400px] xl:h-[600px] 2xl:h-[800px]" ref={googleMapRef} />
     );
 }
 
 function AppFooterCopyrightSection() {
     const currentYear = new Date().getFullYear();
     return (
-        <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-4xl">
             <span>&copy; {currentYear} Copyright: </span>
             <span className="font-semibold text-neutral-600 dark:text-neutral-400">{AppConstants.title}</span>
         </div>
@@ -150,9 +150,9 @@ export default function AppFooter() {
         <>
             <footer className="relative w-full bg-[#FBFBFB] pt-2 text-neutral-500 shadow-lg dark:bg-neutral-600 dark:text-neutral-200 lg:pt-4">
                 <AppFooterSocialSection />
-                <div className="mx-6 py-10 text-center md:text-left">
+                <div className="mx-6 py-10 md:text-left">
                     <div className="grid-1 grid gap-8 md:grid-cols-5 lg:grid-cols-6">
-                        <div className="hidden lg:flex flex-shrink-0">
+                        <div className="hidden lg:flex flex-shrink-0 items-start">
                             <AppCompanyLogoIcon />
                         </div>
                         <div className="col-span-2">

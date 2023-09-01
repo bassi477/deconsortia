@@ -12,7 +12,7 @@ export default function Introduction() {
                 IntroductionTextList.map((text, index) => {
 
                     return (
-                        <p key={`IntroductionText-${index}`} className="my-3 text-neutral-500 dark:text-neutral-300">
+                        <p key={`IntroductionText-${index}`} className="my-3 xl:text-2xl 2xl:text-4xl text-neutral-500 dark:text-neutral-300">
                             {text}
                         </p>
                     );
@@ -23,7 +23,7 @@ export default function Introduction() {
                     IntroductionBulletsList.map((text, index) => {
 
                         return (
-                            <li key={`IntroductionBullets-${index}`} className="flex text-neutral-500 dark:text-neutral-300 text-sm border-b-2 border-neutral-100 border-opacity-100 py-2 dark:border-opacity-50">
+                            <li key={`IntroductionBullets-${index}`} className="flex xl:text-2xl 2xl:text-4xl text-neutral-500 dark:text-neutral-300 text-sm border-b-2 border-neutral-100 border-opacity-100 py-2 dark:border-opacity-50">
                                 <AppIntroductionBulletIcon />
                                 {text}
                             </li>
