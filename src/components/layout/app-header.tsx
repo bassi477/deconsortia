@@ -157,7 +157,7 @@ export default function AppHeader() {
     return (
         <>
             <nav
-                className="relative flex w-full flex-nowrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 lg:flex-wrap lg:justify-start lg:py-4"
+                className=" flex w-full flex-nowrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 lg:flex-wrap lg:justify-start lg:py-4 sticky z-10"
                 data-te-navbar-ref>
                 <div className="flex w-full flex-wrap items-center justify-between px-3">
                     <AppHeaderBrand />
