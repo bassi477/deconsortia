@@ -9,8 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
     "@googlemaps/js-api-loader": "^1.16.2",
     "@heroicons/react": "^2.0.18",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-navigation-menu": "^1.1.3",
     "@types/node": "20.5.7",
@@ -21,6 +26,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "framer-motion": "^10.16.4",
     "next": "13.4.19",
     "postcss": "8.4.28",
     "react": "18.2.0",
@@ -33,5 +39,9 @@
   },
   "devDependencies": {
     "@types/google.maps": "^3.54.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": true
   }
 }
